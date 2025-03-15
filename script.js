@@ -66,18 +66,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle download icon clicks
     downloadIcons.forEach(icon => {
-        icon.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent modal from opening
-            
-            const imgContainer = this.closest('.wallpaper-container');
-            const img = imgContainer.querySelector('img');
-            const src = img.getAttribute('src');
-            const alt = img.getAttribute('alt');
-            
-            // Trigger download
-            downloadImage(src, alt);
-        });
+    icon.addEventListener('click', function(e) {
+        e.stopPropagation(); // This is correct, but not sufficient alone
+        
+        const imgContainer = this.closest('.wallpaper-container');
+        const img = imgContainer.querySelector('img');
+        const src = img.getAttribute('src');
+        const alt = img.getAttribute('alt');
+        
+        // Trigger download
+        downloadImage(src, alt);
     });
+});
     
     // Close modal when clicking on close button
     closeBtn.addEventListener('click', function() {
@@ -99,11 +99,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Download button in modal
-    downloadBtn.addEventListener('click', function() {
-        const src = modalImage.getAttribute('src');
-        const title = modalTitle.textContent;
-        downloadImage(src, title);
-    });
+    downloadBtn.addEventListener('click', function(e) {
+    e.preventDefault(); // Add this line
+    const src = modalImage.getAttribute('src');
+    const title = modalTitle.textContent;
+    downloadImage(src, title);
+});
     
     // Function to open modal
     function openModal(src, title, category) {

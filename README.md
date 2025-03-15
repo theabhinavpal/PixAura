@@ -20,4 +20,4 @@ Categories:
 Frontend: HTML, CSS, JavaScript
 Animations: CSS animations & JavaScript enhancements
 Image Modal: JavaScript for previewing wallpapers before downloading
-Download Feature: JavaScript to enable easy downloading
+Download Feature: JavaScript to enable easy downloading.
